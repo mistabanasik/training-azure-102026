@@ -42,5 +42,8 @@ jobs:
           containerAppName: gateway-api-kacperbanasik-cicd
           resourceGroup: szkolenie-rg
           imageToBuild: rejestrkb.azurecr.io/gateway-api-kacperbanasik-cicd:${{ github.sha }}
+          environmentVariables: >
+            SETTINGS_API_URL=https://settings-api-kacperbanasik-cicd.happyriver-c3b70016.westus2.azurecontainerapps.io
+            DICE_API_URL=https://dice-api-kacperbanasik-cicd.happyriver-c3b70016.westus2.azurecontainerapps.io
 
 
