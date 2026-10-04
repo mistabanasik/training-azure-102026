@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "nodejs-microservices/packages/website/**"
+      - ".github/workflows/azure-static-web-apps-ashy-moss-0f8152c10.yml"
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
