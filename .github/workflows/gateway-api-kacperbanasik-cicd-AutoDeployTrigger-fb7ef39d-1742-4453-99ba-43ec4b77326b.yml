@@ -41,6 +41,6 @@ jobs:
           registryPassword: ${{ secrets.GATEWAYAPIKACPERBANASIKCICD_REGISTRY_PASSWORD }}
           containerAppName: gateway-api-kacperbanasik-cicd
           resourceGroup: szkolenie-rg
-          imageToBuild: default/[parameters('containerAppName')]:${{ github.sha }}
+          imageToBuild: rejestrkb.azurecr.io/gateway-api-kacperbanasik-cicd:${{ github.sha }}
 
 
