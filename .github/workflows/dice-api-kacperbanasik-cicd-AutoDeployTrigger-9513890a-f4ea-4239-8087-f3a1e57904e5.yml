@@ -7,7 +7,7 @@ on:
     branches: 
       [ main ]
     paths:
-    - '**'
+    - 'nodejs-microservices/packages/dice-api/**'
     - '.github/workflows/dice-api-kacperbanasik-cicd-AutoDeployTrigger-9513890a-f4ea-4239-8087-f3a1e57904e5.yml'
 
   # Allow manual trigger 
@@ -34,16 +34,13 @@ jobs:
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v2
         with:
-          appSourcePath: ${{ github.workspace }}
-          _dockerfilePathKey_: _dockerfilePath_
-          _targetLabelKey_: _targetLabel_
-          registryUrl: 
-          registryUsername: ${{ secrets.DICEAPIKACPERBANASIKCICD_REGISTRY_USERNAME }}
-          registryPassword: ${{ secrets.DICEAPIKACPERBANASIKCICD_REGISTRY_PASSWORD }}
+          appSourcePath: ${{ github.workspace }}/nodejs-microservices
+          dockerfilePath: packages/dice-api/Dockerfile
+          registryUrl: rejestrkb.azurecr.io
+          registryUsername: ${{ secrets.GATEWAYAPIKACPERBANASIKCICD_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.GATEWAYAPIKACPERBANASIKCICD_REGISTRY_PASSWORD }}
           containerAppName: dice-api-kacperbanasik-cicd
           resourceGroup: szkolenie-rg
-          imageToBuild: default/[parameters('containerAppName')]:${{ github.sha }}
-          _buildArgumentsKey_: |
-            _buildArgumentsValues_
+          imageToBuild: rejestrkb.azurecr.io/dice-api-kacperbanasik-cicd:${{ github.sha }}
 
 
