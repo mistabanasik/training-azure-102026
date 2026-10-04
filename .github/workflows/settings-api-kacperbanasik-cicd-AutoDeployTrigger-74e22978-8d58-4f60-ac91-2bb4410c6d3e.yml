@@ -7,7 +7,7 @@ on:
     branches: 
       [ main ]
     paths:
-    - '**'
+    - 'nodejs-microservices/packages/settings-api/**'
     - '.github/workflows/settings-api-kacperbanasik-cicd-AutoDeployTrigger-74e22978-8d58-4f60-ac91-2bb4410c6d3e.yml'
 
   # Allow manual trigger 
@@ -34,16 +34,13 @@ jobs:
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v2
         with:
-          appSourcePath: ${{ github.workspace }}
-          _dockerfilePathKey_: _dockerfilePath_
-          _targetLabelKey_: _targetLabel_
-          registryUrl: 
-          registryUsername: ${{ secrets.SETTINGSAPIKACPERBANASIKCICD_REGISTRY_USERNAME }}
-          registryPassword: ${{ secrets.SETTINGSAPIKACPERBANASIKCICD_REGISTRY_PASSWORD }}
+          appSourcePath: ${{ github.workspace }}/nodejs-microservices
+          dockerfilePath: packages/settings-api/Dockerfile
+          registryUrl: rejestrkb.azurecr.io
+          registryUsername: ${{ secrets.GATEWAYAPIKACPERBANASIKCICD_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.GATEWAYAPIKACPERBANASIKCICD_REGISTRY_PASSWORD }}
           containerAppName: settings-api-kacperbanasik-cicd
           resourceGroup: szkolenie-rg
-          imageToBuild: default/[parameters('containerAppName')]:${{ github.sha }}
-          _buildArgumentsKey_: |
-            _buildArgumentsValues_
+          imageToBuild: rejestrkb.azurecr.io/settings-api-kacperbanasik-cicd:${{ github.sha }}
 
 
