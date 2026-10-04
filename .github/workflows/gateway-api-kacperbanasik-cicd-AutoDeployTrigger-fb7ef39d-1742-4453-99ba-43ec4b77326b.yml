@@ -7,7 +7,7 @@ on:
     branches: 
       [ main ]
     paths:
-    - '**'
+    - 'nodejs-microservices/packages/gateway-api/**'
     - '.github/workflows/gateway-api-kacperbanasik-cicd-AutoDeployTrigger-fb7ef39d-1742-4453-99ba-43ec4b77326b.yml'
 
   # Allow manual trigger 
